@@ -1,18 +1,13 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+using Newtonsoft.Json.Serialization;
 using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Text;
 
 namespace WebApp_Desafio_FrontEnd
@@ -35,7 +30,6 @@ namespace WebApp_Desafio_FrontEnd
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
 
             services
                 .AddHttpContextAccessor()
@@ -85,7 +79,6 @@ namespace WebApp_Desafio_FrontEnd
             //      However, .NET Core can be extended to support additional encodings
             // like Windows-1252, Shift-JIS, GB2312 by registering the CodePagesEncodingProvider.
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-
         }
     }
 }

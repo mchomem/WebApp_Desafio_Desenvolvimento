@@ -20,15 +20,14 @@ namespace WebApp_Desafio_BackEnd.DataAccess
             {
                 using (SQLiteCommand dbCommand = dbConnection.CreateCommand())
                 {
-
-                    dbCommand.CommandText = 
-                        "SELECT chamados.ID, " + 
+                    dbCommand.CommandText =
+                        "SELECT chamados.ID, " +
                         "       Assunto, " +
                         "       Solicitante, " +
                         "       IdDepartamento, " +
-                        "       departamentos.Descricao AS Departamento, " + 
-                        "       DataAbertura " + 
-                        "FROM chamados " + 
+                        "       departamentos.Descricao AS Departamento, " +
+                        "       DataAbertura " +
+                        "FROM chamados " +
                         "INNER JOIN departamentos " +
                         "   ON chamados.IdDepartamento = departamentos.ID ";
 
@@ -44,14 +43,19 @@ namespace WebApp_Desafio_BackEnd.DataAccess
 
                             if (!dataReader.IsDBNull(0))
                                 chamado.ID = dataReader.GetInt32(0);
+
                             if (!dataReader.IsDBNull(1))
                                 chamado.Assunto = dataReader.GetString(1);
+
                             if (!dataReader.IsDBNull(2))
                                 chamado.Solicitante = dataReader.GetString(2);
+
                             if (!dataReader.IsDBNull(3))
                                 chamado.IdDepartamento = dataReader.GetInt32(3);
+
                             if (!dataReader.IsDBNull(4))
                                 chamado.Departamento = dataReader.GetString(4);
+
                             if (!dataReader.IsDBNull(5))
                                 chamado.DataAbertura = DateTime.Parse(dataReader.GetString(5));
 
@@ -61,7 +65,6 @@ namespace WebApp_Desafio_BackEnd.DataAccess
                     }
                     dbConnection.Close();
                 }
-
             }
 
             return lstChamados;
@@ -129,18 +132,18 @@ namespace WebApp_Desafio_BackEnd.DataAccess
                 {
                     if (ID == 0)
                     {
-                        dbCommand.CommandText = 
+                        dbCommand.CommandText =
                             "INSERT INTO chamados (Assunto,Solicitante,IdDepartamento,DataAbertura)" +
                             "VALUES (@Assunto,@Solicitante,@IdDepartamento,@DataAbertura)";
                     }
                     else
                     {
-                        dbCommand.CommandText = 
-                            "UPDATE chamados " + 
-                            "SET Assunto=@Assunto, " + 
+                        dbCommand.CommandText =
+                            "UPDATE chamados " +
+                            "SET Assunto=@Assunto, " +
                             "    Solicitante=@Solicitante, " +
-                            "    IdDepartamento=@IdDepartamento, " + 
-                            "    DataAbertura=@DataAbertura " + 
+                            "    IdDepartamento=@IdDepartamento, " +
+                            "    DataAbertura=@DataAbertura " +
                             "WHERE ID=@ID ";
                     }
 
@@ -157,7 +160,6 @@ namespace WebApp_Desafio_BackEnd.DataAccess
             }
 
             return (regsAfetados > 0);
-
         }
 
         public bool ExcluirChamado(int idChamado)

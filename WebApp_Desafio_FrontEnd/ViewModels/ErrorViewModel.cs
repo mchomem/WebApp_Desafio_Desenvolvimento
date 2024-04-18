@@ -1,5 +1,3 @@
-using System;
-
 namespace WebApp_Desafio_FrontEnd.Models
 {
     public class ErrorViewModel

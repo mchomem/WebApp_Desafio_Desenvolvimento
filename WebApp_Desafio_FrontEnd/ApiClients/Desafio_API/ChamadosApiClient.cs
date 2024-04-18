@@ -95,6 +95,5 @@ namespace WebApp_Desafio_FrontEnd.ApiClients.Desafio_API
 
             return JsonConvert.DeserializeObject<bool>(json);
         }
-
     }
 }

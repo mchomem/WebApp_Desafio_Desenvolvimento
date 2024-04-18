@@ -27,6 +27,7 @@ namespace WebApp_Desafio_API
         /// 
         /// </summary>
         public IConfiguration Configuration { get; }
+
         /// <summary>
         /// 
         /// </summary>

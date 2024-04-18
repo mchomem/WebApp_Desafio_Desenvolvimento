@@ -1,4 +1,3 @@
-using System;
 using WebApp_Desafio_API.ViewModels.Enums;
 
 namespace WebApp_Desafio_API.ViewModels

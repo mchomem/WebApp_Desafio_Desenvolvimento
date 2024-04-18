@@ -124,7 +124,6 @@ namespace WebApp_Desafio_BackEnd.DataAccess
                     dbConnection.Open();
                     regsAfetados = dbCommand.ExecuteNonQuery();
                     dbConnection.Close();
-
                 }
             }
 
