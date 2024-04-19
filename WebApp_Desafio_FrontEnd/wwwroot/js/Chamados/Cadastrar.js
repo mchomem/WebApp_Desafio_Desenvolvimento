@@ -62,6 +62,22 @@
             return;
         }
 
+        var data = $('#dtAbertura').val();
+        var partes = data.split('/');
+        var day = partes[0];
+        var month = partes[1];
+        var year = partes[2];
+        var dataUS = `${year}-${month}-${day}`
+
+        if (new Date(dataUS) < new Date()) {
+            Swal.fire({
+                text: 'Chamados não podem ser criados com data retroativa!',
+                confirmButtonText: 'OK',
+                icon: 'warning'
+            });
+            return;
+        }
+
         if ($('#form').valid() != true) {
             FormularioInvalidoAlert();
             return;
@@ -69,7 +85,6 @@
 
         let chamado = SerielizeForm($('#form'));
         let url = $('#form').attr('action');
-        //debugger;
 
         $.ajax({
             type: "POST",
