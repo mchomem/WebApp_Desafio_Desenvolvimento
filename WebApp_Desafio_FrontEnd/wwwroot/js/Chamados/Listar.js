@@ -13,7 +13,7 @@
             { data: 'Assunto' },
             { data: 'Solicitante' },
             { data: 'Departamento' },
-            { data: 'DataAberturaWrapper', title: 'Data Abertura' },
+            { data: 'DataAberturaWrapper', title: 'Data de Abertura' },
         ],
     });
 
