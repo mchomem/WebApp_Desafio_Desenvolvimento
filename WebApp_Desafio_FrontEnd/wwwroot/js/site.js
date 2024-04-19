@@ -5,11 +5,14 @@
  */
 function FormularioInvalidoAlert(form) {
     let mensagensDeErro = $("span.text-danger.field-validation-error");
+
     if (form) {
         mensagensDeErro = form.find("span.text-danger.field-validation-error");
     }
+
     let msg = "";
     let errElem = {};
+
     for (var i = 0; i < mensagensDeErro.length; i++) {
         if (mensagensDeErro[i].children.length > 0) {
             msg = mensagensDeErro[i].children[0].innerHTML;
@@ -18,9 +21,9 @@ function FormularioInvalidoAlert(form) {
         } else if (mensagensDeErro[i].innerHTML) {
             msg = mensagensDeErro[i].innerHTML;
             errElem = mensagensDeErro[i];
-
         }
     }
+
     if (msg) {
         console.log(msg);
         Swal.fire({

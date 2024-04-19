@@ -63,16 +63,13 @@
                         type: 'DELETE',
                         contentType: 'application/json',
                         error: function (result) {
-
                             Swal.fire({
                                 text: result,
                                 confirmButtonText: 'OK',
                                 icon: 'error'
                             });
-
                         },
                         success: function (result) {
-
                             Swal.fire({
                                 type: result.Type,
                                 title: result.Title,

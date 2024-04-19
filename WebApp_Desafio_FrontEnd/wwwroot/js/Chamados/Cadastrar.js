@@ -26,6 +26,42 @@
 
     $('#btnSalvar').click(function () {
 
+        if ($('#txtAssunto').val() == '') {
+            Swal.fire({
+                text: 'Informe o Assunto!',
+                confirmButtonText: 'OK',
+                icon: 'warning'
+            });
+            return;
+        }
+
+        if ($('#txtAssunto').val().length > 40) {
+            Swal.fire({
+                text: 'Tamanho máximo do campo Assunto é de 40 caracteres!',
+                confirmButtonText: 'OK',
+                icon: 'warning'
+            });
+            return;
+        }
+
+        if ($('#txtSolicitante').val() == '') {
+            Swal.fire({
+                text: 'Informe o Solicitante!',
+                confirmButtonText: 'OK',
+                icon: 'warning'
+            });
+            return;
+        }
+
+        if ($('#txtSolicitante').val().length > 20) {
+            Swal.fire({
+                text: 'Tamanho máximo do campo Solicitante é de 20 caracteres!',
+                confirmButtonText: 'OK',
+                icon: 'warning'
+            });
+            return;
+        }
+
         if ($('#form').valid() != true) {
             FormularioInvalidoAlert();
             return;
