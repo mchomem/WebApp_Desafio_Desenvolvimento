@@ -169,7 +169,6 @@
         </TablixRowHierarchy>
         <DataSetName>dsDepartamentos</DataSetName>
         <Top>0.3175cm</Top>
-        <Left>0cm</Left>
         <Height>1.2cm</Height>
         <Width>16.51cm</Width>
         <Style>
@@ -256,7 +255,6 @@ Comercial: 0800 123 1184</Value>
           <Source>Embedded</Source>
           <Value>Netspeed_Logotipo</Value>
           <Sizing>Clip</Sizing>
-          <Left>0cm</Left>
           <Height>2.72577cm</Height>
           <Width>5.41583cm</Width>
           <ZIndex>2</ZIndex>
@@ -273,7 +271,7 @@ Comercial: 0800 123 1184</Value>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>LISTAGEM DE DEPARTAMENTOS</Value>
+                  <Value>RELATÓRIO DE DEPARTAMENTOS</Value>
                   <Style>
                     <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>

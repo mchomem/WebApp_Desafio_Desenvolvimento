@@ -73,8 +73,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="rptChamados.rdlc" />
-    <EmbeddedResource Include="rptDepartamentos.rdlc" />
+    <EmbeddedResource Include="rptChamados.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptDepartamentos.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="dsChamados.xsc">
       <DependentUpon>dsChamados.xsd</DependentUpon>
     </None>

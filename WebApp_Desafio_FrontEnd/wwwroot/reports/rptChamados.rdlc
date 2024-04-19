@@ -6,19 +6,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.11383cm</Width>
+              <Width>2.31116cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>5.07225cm</Width>
+              <Width>7.52141cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.302cm</Width>
+              <Width>4.6cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.302cm</Width>
+              <Width>3.79567cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.71992cm</Width>
+              <Width>4.94925cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -172,7 +172,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox11</rd:DefaultName>
@@ -328,7 +330,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>DataAbertura</rd:DefaultName>
@@ -371,7 +375,7 @@
         <DataSetName>dsChamados</DataSetName>
         <Top>0.28787cm</Top>
         <Height>1.2cm</Height>
-        <Width>16.51cm</Width>
+        <Width>23.17749cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -382,7 +386,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>9.125in</Width>
   <Page>
     <PageHeader>
       <Height>3.94229cm</Height>
@@ -407,10 +411,10 @@ Comercial: 0800 123 1184</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.77639cm</Top>
+          <Top>0.74111cm</Top>
           <Left>5.59222cm</Left>
           <Height>1.94938cm</Height>
-          <Width>10.91778cm</Width>
+          <Width>17.58528cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -440,7 +444,7 @@ Comercial: 0800 123 1184</Value>
           <rd:DefaultName>Textbox3</rd:DefaultName>
           <Left>5.59222cm</Left>
           <Height>0.6cm</Height>
-          <Width>10.91778cm</Width>
+          <Width>17.58528cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -472,7 +476,7 @@ Comercial: 0800 123 1184</Value>
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>LISTAGEM DE CHAMADOS</Value>
+                  <Value>RELATÓRIO DE CHAMADOS</Value>
                   <Style>
                     <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -487,7 +491,7 @@ Comercial: 0800 123 1184</Value>
           <rd:DefaultName>Textbox4</rd:DefaultName>
           <Top>2.90215cm</Top>
           <Height>0.6cm</Height>
-          <Width>16.51cm</Width>
+          <Width>23.1775cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -506,8 +510,8 @@ Comercial: 0800 123 1184</Value>
         </Border>
       </Style>
     </PageHeader>
-    <PageHeight>29.7cm</PageHeight>
-    <PageWidth>21cm</PageWidth>
+    <PageHeight>21cm</PageHeight>
+    <PageWidth>29.7cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>
     <RightMargin>2cm</RightMargin>
     <TopMargin>2cm</TopMargin>
