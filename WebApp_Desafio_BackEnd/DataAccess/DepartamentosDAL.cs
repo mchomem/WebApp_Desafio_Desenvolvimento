@@ -37,7 +37,6 @@ namespace WebApp_Desafio_BackEnd.DataAccess
                     }
                     dbConnection.Close();
                 }
-
             }
 
             return lstDepartamentos;
@@ -108,7 +107,6 @@ namespace WebApp_Desafio_BackEnd.DataAccess
             }
 
             return (regsAfetados > 0);
-
         }
 
         public bool ExcluirDepartamento(int idDepartamento)
