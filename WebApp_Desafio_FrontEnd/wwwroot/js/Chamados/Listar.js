@@ -57,7 +57,17 @@
     $('#btnExcluir').click(function () {
 
         let data = table.row('.selected').data();
+
+        if (data == undefined) {
+            Swal.fire({
+                text: 'Selecione um registro da listagem para excluí-lo!',
+                confirmButtonText: 'OK',
+                icon: 'warning'
+            });
+        }
+
         let idRegistro = data.ID;
+
         if (!idRegistro || idRegistro <= 0) {
             return;
         }
