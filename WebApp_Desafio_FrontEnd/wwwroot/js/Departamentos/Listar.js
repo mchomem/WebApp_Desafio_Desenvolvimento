@@ -39,6 +39,15 @@
 
     $('#btnEditar').click(function () {
         var data = table.row('.selected').data();
+
+        if (data == undefined) {
+            Swal.fire({
+                text: 'Selecione um registro da listagem para editá-lo e clique no botão Editar ou clique duas vezes com botão esquerdo do mouse sobre o registro!',
+                confirmButtonText: 'OK',
+                icon: 'warning'
+            });
+        }
+
         window.location.href = config.contextPath + 'Departamentos/Editar/' + data.ID;
     });
 
