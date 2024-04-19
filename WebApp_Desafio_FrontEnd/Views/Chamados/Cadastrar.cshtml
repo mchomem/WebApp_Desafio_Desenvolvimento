@@ -12,7 +12,6 @@
     <div class="col-lg-12">
 
         <form id="form" asp-action="Cadastrar" class="wizard-big" enctype="multipart/form-data" role="form" onsubmit="return false;">
-
             <input type="hidden" asp-for="ID" />
 
             <div class="row">
@@ -61,7 +60,6 @@
                     </div>
                     <span class="text-danger" asp-validation-for="DataAbertura"></span>
                 </div>
-
             </div>
         </form>
     </div>
@@ -80,7 +78,7 @@
 </div>
 
 @section styles
-    {
+{
     <link rel="stylesheet" href="~/lib/sweetalert2/sweetalert2.min.css" />
     @*<link rel="stylesheet" href="~/lib/bootstrap-datepicker/css/bootstrap-datepicker.min.css" />*@
     @*<link rel="stylesheet" href="~/lib/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" />*@
@@ -90,10 +88,12 @@
     {
     <!-- SweetAlert2 -->
     <script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
+
     <!-- Bootstrap Datepicker -->
     <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script src="~/lib/bootstrap-datepicker/locales/bootstrap-datepicker.pt-br.min.js"></script>
 
+    <!-- JQuery -->
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 
     <script src="~/js/Chamados/Cadastrar.js" asp-append-version="true"></script>

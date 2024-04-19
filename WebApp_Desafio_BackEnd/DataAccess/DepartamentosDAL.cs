@@ -78,7 +78,7 @@ namespace WebApp_Desafio_BackEnd.DataAccess
             return departamento;
         }
 
-        public bool GravarDepartamento(int ID, string descricacao)
+        public bool GravarDepartamento(int ID, string descricao)
         {
             int regsAfetados = -1;
 
@@ -88,17 +88,17 @@ namespace WebApp_Desafio_BackEnd.DataAccess
                 {
                     if (ID == 0)
                     {
-                        dbCommand.CommandText = "INSERT INTO departamentos (Descricacao) VALUES (@Descricacao)";
+                        dbCommand.CommandText = "INSERT INTO departamentos (Descricao) VALUES (@Descricao)";
                     }
                     else
                     {
                         dbCommand.CommandText =
                             "UPDATE departamentos " +
-                            "SET Descricacao=@Descricacao " +
+                            "SET Descricao=@Descricao " +
                             "WHERE ID=@ID ";
                     }
 
-                    dbCommand.Parameters.AddWithValue("@Descricacao", descricacao);
+                    dbCommand.Parameters.AddWithValue("@Descricao", descricao);
                     dbCommand.Parameters.AddWithValue("@ID", ID);
 
                     dbConnection.Open();

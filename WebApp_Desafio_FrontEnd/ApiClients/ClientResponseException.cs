@@ -9,17 +9,17 @@ namespace WebApp_Desafio_FrontEnd.ApiClients
 
         public ClientResponseException() : base()
         {
-
+            ;
         }
 
         public ClientResponseException(string message) : base(message)
         {
-
+            ;
         }
 
         public ClientResponseException(string message, Exception inner) : base(message, inner)
         {
-
+            ;
         }
 
         public ClientResponseException(HttpStatusCode statusCode, string message) : base(message)

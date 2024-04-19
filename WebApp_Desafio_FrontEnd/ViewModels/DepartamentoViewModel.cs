@@ -13,6 +13,5 @@ namespace WebApp_Desafio_FrontEnd.ViewModels
         [Display(Name = "Descricao")]
         [DataMember(Name = "Descricao")]
         public string Descricao { get; set; }
-
     }
 }
