@@ -12,8 +12,9 @@
 
     $('#btnCancelar').click(function () {
         Swal.fire({
-            html: "Deseja cancelar essa operação? O registro não será salvo.",
-            type: "warning",
+            title: "Pergunta",
+            html: "Deseja cancelar essa operação? <br><br>O registro não será salvo.",
+            icon: "question",
             showCancelButton: true,
         }).then(function (result) {
             if (result.value) {
@@ -28,6 +29,7 @@
 
         if ($('#txtAssunto').val() == '') {
             Swal.fire({
+                title: "Atenção",
                 text: 'Informe o Assunto!',
                 confirmButtonText: 'OK',
                 icon: 'warning'
@@ -37,6 +39,7 @@
 
         if ($('#txtAssunto').val().length > 40) {
             Swal.fire({
+                title: "Atenção",
                 text: 'Tamanho máximo do campo Assunto é de 40 caracteres!',
                 confirmButtonText: 'OK',
                 icon: 'warning'
@@ -46,6 +49,7 @@
 
         if ($('#txtSolicitante').val() == '') {
             Swal.fire({
+                title: "Atenção",
                 text: 'Informe o Solicitante!',
                 confirmButtonText: 'OK',
                 icon: 'warning'
@@ -55,6 +59,7 @@
 
         if ($('#txtSolicitante').val().length > 20) {
             Swal.fire({
+                title: "Atenção",
                 text: 'Tamanho máximo do campo Solicitante é de 20 caracteres!',
                 confirmButtonText: 'OK',
                 icon: 'warning'
@@ -71,6 +76,7 @@
 
         if (new Date(dataUS) < new Date()) {
             Swal.fire({
+                title: "Atenção",
                 text: 'Chamados não podem ser criados com data retroativa!',
                 confirmButtonText: 'OK',
                 icon: 'warning'
@@ -108,9 +114,7 @@
                     confirmButtonText: 'OK',
                     icon: 'error'
                 });
-
             },
         });
     });
-
 });

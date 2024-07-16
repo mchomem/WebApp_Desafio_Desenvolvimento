@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace WebApp_Desafio_FrontEnd.ApiClients
@@ -88,10 +90,21 @@ namespace WebApp_Desafio_FrontEnd.ApiClients
             return webRequest;
         }
 
+#if DEBUG
+        private static bool IgnoreCertificateValidationCallback(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+            => true; // Sempre aceita o certificado.        
+#endif
+
         protected HttpWebResponse Get(string url, Dictionary<string, object> queries = null, Dictionary<string, object> headers = null)
         {
             try
             {
+#if DEBUG
+                // Ignorar erros de certificado SSL.
+                // Nunca usar em produção
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(IgnoreCertificateValidationCallback);
+#endif
+
                 using (WebClient cliente = this.CreateWebClient(ref url, queries, headers))
                 {
                     var webRequest = (HttpWebRequest)WebRequest.Create(url);

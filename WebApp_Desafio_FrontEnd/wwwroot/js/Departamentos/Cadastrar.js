@@ -12,8 +12,9 @@
 
     $('#btnCancelar').click(function () {
         Swal.fire({
-            html: "Deseja cancelar essa operação? O registro não será salvo.",
-            type: "warning",
+            title: "Pergunta",
+            html: "Deseja cancelar essa operação?<br><br> O registro não será salvo.",
+            icon: "question",
             showCancelButton: true,
         }).then(function (result) {
             if (result.value) {
@@ -28,6 +29,7 @@
 
         if ($('#txtDescricao').val() == '') {
             Swal.fire({
+                title: "Atenção",
                 text: 'Informe a Descrição!',
                 confirmButtonText: 'OK',
                 icon: 'warning'
@@ -37,6 +39,7 @@
 
         if ($('#txtDescricao').val().length > 20) {
             Swal.fire({
+                title: "Atenção",
                 text: 'Tamanho máximo do campo Descrição é de 20 caracteres!',
                 confirmButtonText: 'OK',
                 icon: 'warning'
@@ -67,6 +70,7 @@
             },
             error: function (result) {
                 Swal.fire({
+                    title: "Erro",
                     text: result,
                     confirmButtonText: 'OK',
                     icon: 'error'
@@ -74,5 +78,4 @@
             },
         });
     });
-
 });

@@ -45,6 +45,7 @@
 
         if (data == undefined) {
             Swal.fire({
+                title: "Atenção",
                 text: 'Selecione um registro da listagem para editá-lo e clique no botão Editar ou clique duas vezes com botão esquerdo do mouse sobre o registro!',
                 confirmButtonText: 'OK',
                 icon: 'warning'
@@ -60,6 +61,7 @@
 
         if (data == undefined) {
             Swal.fire({
+                title: "Atenção",
                 text: 'Selecione um registro da listagem para excluí-lo!',
                 confirmButtonText: 'OK',
                 icon: 'warning'
@@ -74,8 +76,9 @@
 
         if (idRegistro) {
             Swal.fire({
+                title: "Pergunta",
                 text: "Tem certeza de que deseja excluir " + data.Assunto + " ?",
-                type: "warning",
+                icon: "question",
                 showCancelButton: true,
             }).then(function (result) {
 
@@ -86,6 +89,7 @@
                         contentType: 'application/json',
                         error: function (result) {
                             Swal.fire({
+                                title: "Erro",
                                 text: result,
                                 confirmButtonText: 'OK',
                                 icon: 'error'
@@ -104,9 +108,7 @@
                 } else {
                     console.log("Cancelou a exclusão.");
                 }
-
             });
         }
     });
-
 });
