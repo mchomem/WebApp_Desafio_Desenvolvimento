@@ -69,6 +69,7 @@ namespace WebApp_Desafio_API
                     });
 
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+
                 if (File.Exists(xmlFile))
                 {
                     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -110,7 +111,7 @@ namespace WebApp_Desafio_API
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint(swaggerPath, "WebApp_Desafio_API V1");
-                c.RoutePrefix = "";
+                c.RoutePrefix = string.Empty;
             });            
         }
     }

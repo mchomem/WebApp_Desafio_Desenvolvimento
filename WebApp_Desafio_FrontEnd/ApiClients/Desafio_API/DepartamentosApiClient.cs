@@ -15,10 +15,7 @@ namespace WebApp_Desafio_FrontEnd.ApiClients.Desafio_API
 
         private string desafioApiUrl = "https://localhost:44388/"; // Endereço API IIS-Express
 
-        public DepartamentosApiClient() : base()
-        {
-            //TODO
-        }
+        public DepartamentosApiClient() : base() { }
 
         public List<DepartamentoViewModel> DepartamentosListar()
         {

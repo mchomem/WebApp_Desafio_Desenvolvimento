@@ -17,9 +17,7 @@ namespace WebApp_Desafio_API.Extensions
         /// <param name="ex"></param>
         /// <returns></returns>
         public static ObjectResult ExceptionProcess(this ControllerBase controllerBase, Exception ex)
-        {
-            return ExceptionProcess(controllerBase, ex, AlertTypes.warning);
-        }
+            => ExceptionProcess(controllerBase, ex, AlertTypes.warning);
 
         /// <summary>
         /// Retorna um Objeto completo com o StatusCode
@@ -40,12 +38,6 @@ namespace WebApp_Desafio_API.Extensions
             {
                 errorViewModel.StatusCode = 422;
             }
-            //else if (ex is ResponseException rex)
-            //{
-            //    errorViewModel.StatusCode = 422;
-            //    errorViewModel.PropertyName = rex.PropertyName;
-            //    errorViewModel.Validation = rex.Validation;
-            //}
 
             errorViewModel.Type = type;
 
