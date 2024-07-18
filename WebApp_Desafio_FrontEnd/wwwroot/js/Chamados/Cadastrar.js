@@ -74,7 +74,7 @@
         var year = partes[2];
         var dataUS = `${year}-${month}-${day}`
 
-        if (new Date(dataUS) < new Date()) {
+        if (verificarSeDiaAnterior(new Date(dataUS))) {
             Swal.fire({
                 title: "Atenção",
                 text: 'Chamados não podem ser criados com data retroativa!',
@@ -97,24 +97,32 @@
             url: url,
             data: chamado,
             success: function (result) {
-
                 Swal.fire({
-                    type: result.Type,
-                    title: result.Title,
+                    //title: result.Title,
+                    title: 'Sucesso',
                     text: result.Message,
+                    icon: result.Type,
                 }).then(function () {
                     window.location.href = config.contextPath + result.Controller + '/' + result.Action;
                 });
-
             },
             error: function (result) {
-
                 Swal.fire({
+                    title: 'Erro',
                     text: result,
                     confirmButtonText: 'OK',
                     icon: 'error'
                 });
             },
         });
+
+        function verificarSeDiaAnterior(date) {
+            let diaHoje = new Date().getUTCDate();
+            let diaCriacao = date.getUTCDate();
+
+            // Se o dia de criação do chamado for igual ou maior, não é retroativo.
+            if (diaCriacao >= diaHoje)
+                return false;
+        }
     });
 });

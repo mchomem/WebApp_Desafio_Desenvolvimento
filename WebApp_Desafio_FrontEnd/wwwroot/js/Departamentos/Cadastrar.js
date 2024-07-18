@@ -61,9 +61,10 @@
             data: departamento,
             success: function (result) {
                 Swal.fire({
-                    type: result.Type,
-                    title: result.Title,
+                    //title: result.Title,
+                    title: 'Sucesso',
                     text: result.Message,
+                    icon: result.Type,
                 }).then(function () {
                     window.location.href = config.contextPath + result.Controller + '/' + result.Action;
                 });
