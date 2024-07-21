@@ -3,21 +3,30 @@
 }
 
 <div class="row">
-    <div class="col-md-12">
-        <h2>Netspeed - Sistema de Chamados</h2>
+    <div class="col-md-12 text-center">
+        <h2>Gerenciador de Chamados</h2>
     </div>
 </div>
+
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 text-center">
         <a asp-area="" asp-controller="Chamados" asp-action="Listar">
-            <img src="~/images/Chamados.svg" alt="ASP.NET" class="img-responsive icon256" />
-            <span>Chamados</span>
+            <img src="~/images/Chamados.svg" alt="ASP.NET" class="img-responsive icon-128-h center-block" />
+            <span style="font-size:16px;">Chamados</span>
         </a>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 text-center">
         <a asp-area="" asp-controller="Departamentos" asp-action="Index">
-            <img src="~/images/Departamentos.svg" alt="ASP.NET" class="img-responsive icon256" />
-            <span>Departamentos</span>
+            <img src="~/images/Departamentos.svg" alt="ASP.NET" class="img-responsive icon-128-h center-block" />
+            <span style="font-size:16px;">Departamentos</span>
         </a>
     </div>
 </div>
+
+@section styles {
+    <style>
+        .col-md-3 .text-center:hover {
+            background-color: #558899;
+        }
+    </style>
+}

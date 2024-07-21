@@ -40,8 +40,8 @@ body {
     padding: 5px;
 }
 
-.icon256 {
-    height: 256px;
+.icon-128-h {
+    height: 128px;
 }
 
 /* CLASSES ESPECIFICAS DA APLICAÇÃO */

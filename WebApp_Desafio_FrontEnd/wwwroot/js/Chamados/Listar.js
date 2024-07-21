@@ -13,7 +13,13 @@
             { data: 'Assunto' },
             { data: 'Solicitante' },
             { data: 'Departamento' },
-            { data: 'DataAberturaWrapper', title: 'Data de Abertura' },
+            {
+                data: 'DataAberturaWrapper'
+                , title: 'Data de Abertura'
+                , render: function (data) {
+                    return `<div class='text-center'>${data}</div>`
+                }
+            },
         ],
     });
 

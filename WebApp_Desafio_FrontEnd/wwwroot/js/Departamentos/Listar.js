@@ -9,8 +9,14 @@
         serverSide: true,
         ajax: config.contextPath + 'Departamentos/Datatable',
         columns: [
-            { data: 'ID' },
-            { data: 'Descricao', title: 'Descrição' },
+            {
+                data: 'ID'
+                , width: '50px'
+            },
+            {
+                data: 'Descricao'
+                , title: 'Descrição'
+            },
         ],
     });
 
