@@ -9,7 +9,11 @@ namespace WebApp_Desafio_BackEnd.Business
     {
         private ChamadosDAL dal = new ChamadosDAL();
 
-        public IEnumerable<Chamado> ListarChamados() => dal.ListarChamados();
+        public IEnumerable<Chamado> ListarChamados(string assunto = null, string solicitante = null, int? idDepartamento = null)
+        {
+            var result = dal.ListarChamados(assunto, solicitante, idDepartamento);
+            return result;
+        }
 
         public Chamado ObterChamado(int idChamado) => dal.ObterChamado(idChamado);
 

@@ -1,13 +1,13 @@
 ﻿$(document).ready(function () {
 
-    var table = $('#dataTables-Departamentos').DataTable({
+    let table = $('#dataTables-Departamentos').DataTable({
         paging: false,
         ordering: false,
         info: false,
         searching: false,
         processing: true,
         serverSide: true,
-        ajax: config.contextPath + 'Departamentos/Datatable',
+        ajax: `${config.contextPath}Departamentos/Datatable`,
         columns: [
             {
                 data: 'ID'
@@ -31,20 +31,20 @@
 
     // Implementação de duplo click no elemento TR da table.
     $('#dataTables-Departamentos tbody').on('dblclick', 'tr', function () {
-        var data = table.row(this).data();
-        window.location.href = config.contextPath + 'Departamentos/Editar/' + data.ID;
+        const data = table.row(this).data();
+        window.location.href = `${config.contextPath}Departamentos/Editar/${data.ID}`;
     });
 
     $('#btnRelatorio').click(function () {
-        window.location.href = config.contextPath + 'Departamentos/Report';
+        window.location.href = `${config.contextPath}Departamentos/Report`;
     });
 
     $('#btnAdicionar').click(function () {
-        window.location.href = config.contextPath + 'Departamentos/Cadastrar';
+        window.location.href = `${config.contextPath}Departamentos/Cadastrar`;
     });
 
     $('#btnEditar').click(function () {
-        var data = table.row('.selected').data();
+        const data = table.row('.selected').data();
 
         if (data == undefined) {
             Swal.fire({
@@ -55,12 +55,11 @@
             });
         }
 
-        window.location.href = config.contextPath + 'Departamentos/Editar/' + data.ID;
+        window.location.href = `${config.contextPath}Departamentos/Editar/${data.ID}`;
     });
 
     $('#btnExcluir').click(function () {
-
-        let data = table.row('.selected').data();
+        const data = table.row('.selected').data();
 
         if (data == undefined) {
             Swal.fire({
@@ -80,13 +79,13 @@
         if (idRegistro) {
             Swal.fire({
                 title: "Atenção",
-                text: "Tem certeza de que deseja excluir " + data.Assunto + " ?",
+                text: `Tem certeza de que deseja excluir ${data.Assunto} ?`,
                 type: "warning",
                 showCancelButton: true,
             }).then(function (result) {
                 if (result.value) {
                     $.ajax({
-                        url: config.contextPath + 'Departamentos/Excluir/' + idRegistro,
+                        url: `${config.contextPath}Departamentos/Excluir/${idRegistro}`,
                         type: 'DELETE',
                         contentType: 'application/json',
                         error: function (result) {

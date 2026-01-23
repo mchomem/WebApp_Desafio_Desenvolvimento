@@ -10,7 +10,7 @@ namespace WebApp_Desafio_BackEnd.DataAccess
     {
         private const string ANSI_DATE_FORMAT = "yyyy-MM-dd";
 
-        public IEnumerable<Chamado> ListarChamados()
+        public IEnumerable<Chamado> ListarChamados(string assunto = null, string solicitante = null, int? idDepartamento = null)
         {
             IList<Chamado> lstChamados = new List<Chamado>();
 
@@ -29,7 +29,24 @@ namespace WebApp_Desafio_BackEnd.DataAccess
                         "       DataAbertura " +
                         "FROM chamados " +
                         "INNER JOIN departamentos " +
-                        "   ON chamados.IdDepartamento = departamentos.ID ";
+                        "   ON chamados.IdDepartamento = departamentos.ID " +
+                        "WHERE" +
+                        " 1 = 1";
+
+                    if (!string.IsNullOrEmpty(assunto))
+                    {
+                        dbCommand.CommandText += $" AND Assunto LIKE '%{assunto}%'";
+                    }
+
+                    if (!string.IsNullOrEmpty(solicitante))
+                    {
+                        dbCommand.CommandText += $" AND Solicitante LIKE '%{solicitante}%'";
+                    }
+
+                    if (idDepartamento.HasValue)
+                    {
+                        dbCommand.CommandText += $" AND IdDepartamento = {idDepartamento.Value}";
+                    }
 
                     dbConnection.Open();
 

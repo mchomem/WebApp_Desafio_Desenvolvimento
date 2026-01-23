@@ -27,7 +27,7 @@
 
     $('#btnSalvar').click(function () {
 
-        if ($('#txtDescricao').val() == '') {
+        if ($('#txtDescricao').val() === '') {
             Swal.fire({
                 title: "Atenção",
                 text: 'Informe a Descrição!',
@@ -47,7 +47,7 @@
             return;
         }
 
-        if ($('#form').valid() != true) {
+        if (!$('#form').valid()) {
             FormularioInvalidoAlert();
             return;
         }
@@ -66,7 +66,7 @@
                     text: result.Message,
                     icon: result.Type,
                 }).then(function () {
-                    window.location.href = config.contextPath + result.Controller + '/' + result.Action;
+                    window.location.href = `${config.contextPath}${result.Controller}/${result.Action}`;
                 });
             },
             error: function (result) {

@@ -13,25 +13,28 @@ namespace WebApp_Desafio_FrontEnd.ApiClients.Desafio_API
         private const string chamadosGravarUrl = "api/Chamados/Gravar";
         private const string chamadosExcluirUrl = "api/Chamados/Excluir";
 
-        private string desafioApiUrl = "https://localhost:44388/"; // Endereço API IIS-Express
+        private readonly string desafioApiUrl = "https://localhost:44388/"; // Endereço API IIS-Express
 
         public ChamadosApiClient() : base() { }
 
-        public List<ChamadoViewModel> ChamadosListar()
+        public List<ChamadoViewModel> ChamadosListar(string assunto = null, string solicitante = null, int? idDepartamento = null)
         {
             var headers = new Dictionary<string, object>()
             {
                 { "TokenAutenticacao", tokenAutenticacao }
             };
 
-            var querys = default(Dictionary<string, object>); // Não há parâmetros para essa chamada
+            var querys = new Dictionary<string, object>()
+            {
+                { nameof(assunto), assunto },
+                { nameof(solicitante), solicitante },
+                { nameof(idDepartamento), idDepartamento },
+            };
 
             var response = base.Get($"{desafioApiUrl}{chamadosListUrl}", querys, headers);
 
             base.EnsureSuccessStatusCode(response);
-
             string json = base.ReadHttpWebResponseMessage(response);
-
             return JsonConvert.DeserializeObject<List<ChamadoViewModel>>(json);
         }
 
@@ -48,11 +51,8 @@ namespace WebApp_Desafio_FrontEnd.ApiClients.Desafio_API
             };
 
             var response = base.Get($"{desafioApiUrl}{chamadosObterUrl}", querys, headers);
-
             base.EnsureSuccessStatusCode(response);
-
             string json = base.ReadHttpWebResponseMessage(response);
-
             return JsonConvert.DeserializeObject<ChamadoViewModel>(json);
         }
 
@@ -64,11 +64,8 @@ namespace WebApp_Desafio_FrontEnd.ApiClients.Desafio_API
             };
 
             var response = base.Post($"{desafioApiUrl}{chamadosGravarUrl}", chamado, headers);
-
             base.EnsureSuccessStatusCode(response);
-
             string json = base.ReadHttpWebResponseMessage(response);
-
             return JsonConvert.DeserializeObject<bool>(json);
         }
 
@@ -81,15 +78,12 @@ namespace WebApp_Desafio_FrontEnd.ApiClients.Desafio_API
 
             var querys = new Dictionary<string, object>()
             {
-                { "idChamado", idChamado }
+                { nameof(idChamado), idChamado }
             };
 
             var response = base.Delete($"{desafioApiUrl}{chamadosExcluirUrl}", querys, headers);
-
             base.EnsureSuccessStatusCode(response);
-
             string json = base.ReadHttpWebResponseMessage(response);
-
             return JsonConvert.DeserializeObject<bool>(json);
         }
     }

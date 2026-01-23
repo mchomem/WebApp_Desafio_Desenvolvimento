@@ -1,13 +1,23 @@
 ﻿$(document).ready(function () {
 
-    var table = $('#dataTables-Chamados').DataTable({
+    consultarDepartamentos();
+
+    const table = $('#dataTables-Chamados').DataTable({
         paging: false,
         ordering: false,
         info: false,
         searching: false,
         processing: true,
         serverSide: true,
-        ajax: config.contextPath + 'Chamados/Datatable',
+        ajax: {
+            url: `${config.contextPath}Chamados/Datatable`,
+            type: 'POST',
+            data: function (d) {
+                d.assunto = $('#Assunto').val();
+                d.solicitante = $('#Solicitante').val();
+                d.idDepartamento = $('#IdDepartamento').val();
+            }
+        },
         columns: [
             { data: 'ID' },
             { data: 'Assunto' },
@@ -32,22 +42,30 @@
         }
     });
 
+    $('#buttonLimpar').click(function () {
+        window.location.reload();
+    });
+
+    $('#buttonConsultar').click(function () {
+        table.draw();
+    });
+
     // Implementação de duplo click no elemento TR da table.
     $('#dataTables-Chamados tbody').on('dblclick', 'tr', function () {
-        var data = table.row(this).data();
-        window.location.href = config.contextPath + 'Chamados/Editar/' + data.ID;
+        const data = table.row(this).data();
+        window.location.href = `${config.contextPath}Chamados/Editar/${data.ID}`;
     });
 
     $('#btnRelatorio').click(function () {
-        window.location.href = config.contextPath + 'Chamados/Report';
+        window.location.href = `${config.contextPath}Chamados/Report`;
     });
 
     $('#btnAdicionar').click(function () {
-        window.location.href = config.contextPath + 'Chamados/Cadastrar';
+        window.location.href = `${config.contextPath}Chamados/Cadastrar`;
     });
 
     $('#btnEditar').click(function () {
-        var data = table.row('.selected').data();
+        const data = table.row('.selected').data();
 
         if (data == undefined) {
             Swal.fire({
@@ -58,12 +76,12 @@
             });
         }
 
-        window.location.href = config.contextPath + 'Chamados/Editar/' + data.ID;
+        window.location.href = `${config.contextPath}Chamados/Editar/${data.ID}`;
     });
 
     $('#btnExcluir').click(function () {
 
-        let data = table.row('.selected').data();
+        const data = table.row('.selected').data();
 
         if (data == undefined) {
             Swal.fire({
@@ -83,14 +101,14 @@
         if (idRegistro) {
             Swal.fire({
                 title: "Pergunta",
-                text: "Tem certeza de que deseja excluir " + data.Assunto + " ?",
+                text: `Tem certeza de que deseja excluir ${data.Assunto} ?`,
                 icon: "question",
                 showCancelButton: true,
             }).then(function (result) {
 
                 if (result.value) {
                     $.ajax({
-                        url: config.contextPath + 'Chamados/Excluir/' + idRegistro,
+                        url: `${config.contextPath}Chamados/Excluir/${idRegistro}`,
                         type: 'DELETE',
                         contentType: 'application/json',
                         error: function (result) {
@@ -106,7 +124,7 @@
                                 type: result.Type,
                                 title: result.Title,
                                 text: result.Message,
-                            }).then(function () {
+                            }).then(function() {
                                 table.draw();
                             });
                         }
@@ -118,3 +136,33 @@
         }
     });
 });
+
+function consultarDepartamentos() {
+    $.ajax({
+        url: `${config.contextPath}Departamentos/Datatable`,
+        type: 'GET',
+        contentType: 'application/json',
+        success: function (result) {
+            let selectDepartamento = $('#IdDepartamento');
+            selectDepartamento.empty();
+            selectDepartamento.append('<option value="">Selecione uma opção</option>');
+
+            const data = result.data;
+
+            $.each(data, function (index, item) {
+                selectDepartamento.append($('<option>', {
+                    value: item.ID,
+                    text: item.Descricao
+                }));
+            });
+        },
+        error: function (error) {
+            Swal.fire({
+                title: "Erro",
+                text: 'Falha ao consultar os dados de Departamento.',
+                confirmButtonText: 'OK',
+                icon: 'error'
+            });
+        }
+    });
+}

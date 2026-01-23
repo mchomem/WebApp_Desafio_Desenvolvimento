@@ -27,11 +27,11 @@ namespace WebApp_Desafio_API.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status403Forbidden)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         [Route("Listar")]
-        public IActionResult Listar()
+        public IActionResult Listar(string assunto = null, string solicitante = null, int? idDepartamento = null)
         {
             try
             {
-                var _lst = this.bll.ListarChamados();
+                var _lst = this.bll.ListarChamados(assunto, solicitante, idDepartamento);
 
                 var lst = from chamado in _lst
                           select new ChamadoResponse()
@@ -78,14 +78,14 @@ namespace WebApp_Desafio_API.Controllers
                 var _chamado = this.bll.ObterChamado(idChamado);
 
                 var chamado = new ChamadoResponse()
-                              {
-                                  id = _chamado.ID,
-                                  assunto = _chamado.Assunto,
-                                  solicitante = _chamado.Solicitante,
-                                  idDepartamento = _chamado.IdDepartamento,
-                                  departamento = _chamado.Departamento,
-                                  dataAbertura = _chamado.DataAbertura
-                              };
+                {
+                    id = _chamado.ID,
+                    assunto = _chamado.Assunto,
+                    solicitante = _chamado.Solicitante,
+                    idDepartamento = _chamado.IdDepartamento,
+                    departamento = _chamado.Departamento,
+                    dataAbertura = _chamado.DataAbertura
+                };
 
                 return Ok(chamado);
             }
@@ -140,7 +140,7 @@ namespace WebApp_Desafio_API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        
+
         /// <summary>
         /// Exclui um chamado específico
         /// </summary>

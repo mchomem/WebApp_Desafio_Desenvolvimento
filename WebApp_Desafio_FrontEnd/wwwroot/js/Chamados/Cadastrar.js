@@ -18,16 +18,21 @@
             showCancelButton: true,
         }).then(function (result) {
             if (result.value) {
-                history.back();
-            } else {
-                console.log("Cancelou a inclusão.");
+                Swal.fire({
+                    title: "Mensagem",
+                    html: "Cancelou a inclusão.",
+                    confirmButtonText: 'OK',
+                    icon: "info",
+                }).then(() => {
+                    history.back();
+                });
             }
         });
     });
 
     $('#btnSalvar').click(function () {
 
-        if ($('#txtAssunto').val() == '') {
+        if ($('#txtAssunto').val() === '') {
             Swal.fire({
                 title: "Atenção",
                 text: 'Informe o Assunto!',
@@ -37,17 +42,17 @@
             return;
         }
 
-        if ($('#txtAssunto').val().length > 40) {
+        if ($('#txtAssunto').val().length > 50) {
             Swal.fire({
                 title: "Atenção",
-                text: 'Tamanho máximo do campo Assunto é de 40 caracteres!',
+                text: 'Tamanho máximo do campo Assunto é de 50 caracteres!',
                 confirmButtonText: 'OK',
                 icon: 'warning'
             });
             return;
         }
 
-        if ($('#txtSolicitante').val() == '') {
+        if ($('#txtSolicitante').val() === '') {
             Swal.fire({
                 title: "Atenção",
                 text: 'Informe o Solicitante!',
@@ -67,12 +72,12 @@
             return;
         }
 
-        var data = $('#dtAbertura').val();
-        var partes = data.split('/');
-        var day = partes[0];
-        var month = partes[1];
-        var year = partes[2];
-        var dataUS = `${year}-${month}-${day}`
+        const data = $('#dtAbertura').val();
+        const partes = data.split('/');
+        const day = partes[0];
+        const month = partes[1];
+        const year = partes[2];
+        const dataUS = `${year}-${month}-${day}`
 
         if (verificarSeDiaAnterior(new Date(dataUS))) {
             Swal.fire({
@@ -84,7 +89,7 @@
             return;
         }
 
-        if ($('#form').valid() != true) {
+        if (!$('#form').valid()) {
             FormularioInvalidoAlert();
             return;
         }
@@ -103,7 +108,7 @@
                     text: result.Message,
                     icon: result.Type,
                 }).then(function () {
-                    window.location.href = config.contextPath + result.Controller + '/' + result.Action;
+                    window.location.href = `${config.contextPath}${result.Controller}/${result.Action}`;
                 });
             },
             error: function (result) {

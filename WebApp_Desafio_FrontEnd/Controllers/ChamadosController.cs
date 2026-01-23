@@ -31,13 +31,13 @@ namespace WebApp_Desafio_FrontEnd.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Datatable()
+        [HttpPost]
+        public IActionResult Datatable(string assunto = null, string solicitante = null, int ? idDepartamento = null)
         {
             try
             {
                 var chamadosApiClient = new ChamadosApiClient();
-                var lstChamados = chamadosApiClient.ChamadosListar();
+                var lstChamados = chamadosApiClient.ChamadosListar(assunto, solicitante ,idDepartamento);
 
                 var dataTableVM = new DataTableAjaxViewModel()
                 {
@@ -56,11 +56,12 @@ namespace WebApp_Desafio_FrontEnd.Controllers
         [HttpGet]
         public IActionResult Cadastrar()
         {
+            ViewData["Title"] = "Cadastrar Novo Chamado";
+
             var chamadoVM = new ChamadoViewModel()
             {
                 DataAbertura = DateTime.Now
             };
-            ViewData["Title"] = "Cadastrar Novo Chamado";
 
             try
             {

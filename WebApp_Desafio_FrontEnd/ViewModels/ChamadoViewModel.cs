@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Runtime.Serialization;
@@ -8,7 +9,7 @@ namespace WebApp_Desafio_FrontEnd.ViewModels
     [DataContract]
     public class ChamadoViewModel
     {
-        private CultureInfo ptBR = new CultureInfo("pt-BR");
+        private readonly CultureInfo ptBR = new CultureInfo("pt-BR");
 
         [Display(Name = "ID")]
         [DataMember(Name = "ID")]
@@ -16,10 +17,12 @@ namespace WebApp_Desafio_FrontEnd.ViewModels
 
         [Display(Name = "Assunto")]
         [DataMember(Name = "Assunto")]
+        [DisplayName("Assunto")]
         public string Assunto { get; set; }
 
         [Display(Name = "Solicitante")]
         [DataMember(Name = "Solicitante")]
+        [DisplayName("Solicitante")]
         public string Solicitante { get; set; }
 
         [Display(Name = "IdDepartamento")]
@@ -28,6 +31,7 @@ namespace WebApp_Desafio_FrontEnd.ViewModels
 
         [Display(Name = "Departamento")]
         [DataMember(Name = "Departamento")]
+        [DisplayName("Departamento")]
         public string Departamento { get; set; }
 
         [Display(Name = "Data de Abertura")]
