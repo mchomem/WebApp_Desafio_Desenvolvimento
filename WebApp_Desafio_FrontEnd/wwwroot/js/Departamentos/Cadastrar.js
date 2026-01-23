@@ -18,9 +18,14 @@
             showCancelButton: true,
         }).then(function (result) {
             if (result.value) {
-                history.back();
-            } else {
-                console.log("Cancelou a inclusão.");
+                Swal.fire({
+                    title: "Mensagem",
+                    html: "Cancelou a inclusão.",
+                    confirmButtonText: 'OK',
+                    icon: "info",
+                }).then(() => {
+                    history.back();
+                });
             }
         });
     });
