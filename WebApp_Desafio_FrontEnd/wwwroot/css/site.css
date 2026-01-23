@@ -1,8 +1,14 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    margin-bottom: 100px; /* Altura aproximada do footer */
 }
 
 /* Wrapping element */
@@ -10,6 +16,7 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    min-height: calc(100vh - 200px);
 }
 
 /* Carousel */
@@ -63,4 +70,21 @@ body {
 
 .row .col-md-3 span {
     font-size: 200%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 20px 15px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+footer p {
+    margin: 0;
+    padding-left: 0;
 }
