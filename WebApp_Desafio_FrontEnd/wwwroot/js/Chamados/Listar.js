@@ -16,6 +16,8 @@
                 d.assunto = $('#Assunto').val();
                 d.solicitante = $('#Solicitante').val();
                 d.idDepartamento = $('#IdDepartamento').val();
+
+                // TODO: passar um d.filtros.assunto aqui. No backend, criar uma classe Filtros com esses atributos.
             }
         },
         columns: [
@@ -57,7 +59,11 @@
     });
 
     $('#btnRelatorio').click(function () {
-        window.location.href = `${config.contextPath}Chamados/Report`;
+        const assunto = $('#Assunto').val();
+        const solicitante = $('#Solicitante').val();
+        const idDepartamento = $('#IdDepartamento').val();
+
+        window.location.href = `${config.contextPath}Chamados/Report?assunto=${assunto}&solicitante=${solicitante}&idDepartamento=${idDepartamento}`;
     });
 
     $('#btnAdicionar').click(function () {
@@ -80,7 +86,6 @@
     });
 
     $('#btnExcluir').click(function () {
-
         const data = table.row('.selected').data();
 
         if (data == undefined) {

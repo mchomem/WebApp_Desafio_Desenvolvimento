@@ -145,7 +145,7 @@ namespace WebApp_Desafio_FrontEnd.Controllers
         }
 
         [HttpGet]
-        public IActionResult Report()
+        public IActionResult Report(string assunto = null, string solicitante = null, int? idDepartamento = null)
         {
             string contentRootPath = _hostEnvironment.ContentRootPath;
             string path = Path.Combine(contentRootPath, "wwwroot", "reports", "rptChamados.rdlc");
@@ -156,7 +156,7 @@ namespace WebApp_Desafio_FrontEnd.Controllers
 
             // Carrega os dados que serão apresentados no relatório
             var chamadosApiClient = new ChamadosApiClient();
-            var lstChamados = chamadosApiClient.ChamadosListar();
+            var lstChamados = chamadosApiClient.ChamadosListar(assunto, solicitante, idDepartamento);
 
             localReport.AddDataSource("dsChamados", lstChamados);
 
